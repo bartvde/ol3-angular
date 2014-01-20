@@ -19,6 +19,11 @@ angular.module('myApp.controllers', [])
       });
     };
     map.getLayers().forEach(function(lyr) {
-      $scope.layers.push({title: lyr.get('title'), visible: lyr.get('visible')});
+      var obj = {title: lyr.get('title'), visible: lyr.get('visible')};
+      lyr.on('change:visible', function(evt) {
+        this.visible = evt.target.get('visible');
+        $scope.$apply();
+      }, obj);
+      $scope.layers.push(obj);
     });
   }]);
