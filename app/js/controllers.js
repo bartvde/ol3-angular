@@ -10,6 +10,16 @@ angular.module('myApp.controllers', [])
   }])
   .controller('LayerSwitcherCtrl', ['$scope', function($scope) {
     $scope.layers = [];
+    $scope.updateSelected = function(layer) {
+      var title = layer.title;
+      $scope.selected = title;
+      var group = layer.group;
+      map.getLayers().forEach(function(lyr) {
+        if (lyr.get('group') === group) {
+          lyr.set('visible', (lyr.get('title') === title));
+        }
+      });
+    };
     $scope.updateVisiblity = function(layer) {
       var title = layer.title;
       map.getLayers().forEach(function(lyr) {
@@ -19,7 +29,15 @@ angular.module('myApp.controllers', [])
       });
     };
     map.getLayers().forEach(function(lyr) {
-      var obj = {title: lyr.get('title'), group: lyr.get('group'), visible: lyr.get('visible')};
+      var obj = {
+        title: lyr.get('title'),
+        group: lyr.get('group'),
+        visible: lyr.get('visible'),
+        exclusive: lyr.get('exclusive')
+      };
+      if (obj.exclusive && obj.visible) {
+        $scope.selected = obj.title;
+      }
       lyr.on('change:visible', function(evt) {
         if (this.visible !== evt.target.get('visible')) {
           this.visible = evt.target.get('visible');

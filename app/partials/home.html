@@ -1,9 +1,9 @@
-    <div class="col-md-4" ng-controller="LayerSwitcherCtrl">
-      <ul ng-repeat="group in layers | groupBy:'group'"><h4>{{group}}</h4>
-        <li ng-repeat="layer in layers | filter: {group: group}">
-          <input type="checkbox" ng-model="layer.visible" ng-change="updateVisiblity(layer)">
-          {{layer.title}}
-        </li>
-      </ul>
-    </div>
-
+<div class="col-md-4" ng-controller="LayerSwitcherCtrl">
+  <ul ng-repeat="group in layers | groupBy:'group'"><h4>{{group}}</h4>
+    <li ng-repeat="layer in layers | filter: {group: group}">
+      <input ng-if="!layer.exclusive" type="checkbox" ng-model="layer.visible" ng-change="updateVisiblity(layer)">
+      <input ng-if="layer.exclusive" type="radio" ng-model="selected" name="{{group}}" ng-value="layer.title" ng-change="updateSelected(layer)">
+      {{layer.title}}
+    </li>
+  </ul>
+</div>
