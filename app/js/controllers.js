@@ -19,7 +19,7 @@ angular.module('myApp.controllers', [])
       });
     };
     map.getLayers().forEach(function(lyr) {
-      var obj = {title: lyr.get('title'), visible: lyr.get('visible')};
+      var obj = {title: lyr.get('title'), group: lyr.get('group'), visible: lyr.get('visible')};
       lyr.on('change:visible', function(evt) {
         if (this.visible !== evt.target.get('visible')) {
           this.visible = evt.target.get('visible');

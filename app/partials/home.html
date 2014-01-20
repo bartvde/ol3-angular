@@ -1,6 +1,6 @@
-    <div class="col-md-4">
-      <ul ng-controller="LayerSwitcherCtrl">
-        <li ng-repeat="layer in layers">
+    <div class="col-md-4" ng-controller="LayerSwitcherCtrl">
+      <ul ng-repeat="group in layers | groupBy:'group'"><h4>{{group}}</h4>
+        <li ng-repeat="layer in layers | filter: {group: group}">
           <input type="checkbox" ng-model="layer.visible" ng-change="updateVisiblity(layer)">
           {{layer.title}}
         </li>
