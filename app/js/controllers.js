@@ -2,12 +2,11 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
-  }])
-  .controller('MyCtrl2', [function() {
-
+angular.module('myApp.controllers', [])
+  .controller('MenuCtrl', ['$scope', '$route', '$routeParams', '$location', function MenuCntl($scope, $route, $routeParams, $location) {
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
   }])
   .controller('LayerSwitcherCtrl', ['$scope', function($scope) {
     $scope.layers = [];
