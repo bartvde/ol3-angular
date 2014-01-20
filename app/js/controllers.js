@@ -21,8 +21,12 @@ angular.module('myApp.controllers', [])
     map.getLayers().forEach(function(lyr) {
       var obj = {title: lyr.get('title'), visible: lyr.get('visible')};
       lyr.on('change:visible', function(evt) {
-        this.visible = evt.target.get('visible');
-        $scope.$apply();
+        if (this.visible !== evt.target.get('visible')) {
+          this.visible = evt.target.get('visible');
+          if(!$scope.$$phase) {
+            $scope.$apply();
+          }
+        }
       }, obj);
       $scope.layers.push(obj);
     });
