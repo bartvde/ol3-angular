@@ -12,7 +12,7 @@ angular.module('myApp.controllers', [])
     $scope.layers = [];
     $scope.updateSelected = function(layer) {
       var title = layer.title;
-      $scope.selected = title;
+      $scope.options = {selected: title};
       var group = layer.group;
       map.getLayers().forEach(function(lyr) {
         if (lyr.get('group') === group) {
@@ -36,7 +36,7 @@ angular.module('myApp.controllers', [])
         exclusive: lyr.get('exclusive')
       };
       if (obj.exclusive && obj.visible) {
-        $scope.selected = obj.title;
+        $scope.options = {selected: obj.title};
       }
       lyr.on('change:visible', function(evt) {
         if (this.visible !== evt.target.get('visible')) {
