@@ -1,0 +1,9 @@
+    <div class="col-md-4">
+      <ul ng-controller="LayerSwitcherCtrl">
+        <li ng-repeat="layer in layers">
+          <input type="checkbox" ng-model="layer.visible" ng-change="updateVisiblity(layer)">
+          {{layer.title}}
+        </li>
+      </ul>
+    </div>
+
