@@ -1,7 +1,6 @@
 'use strict';
 
 var map = new ol.Map({
-    target: 'map',
     renderer: ol.RendererHint.CANVAS,
     layers: [new ol.layer.Tile({
         title: "Streets",

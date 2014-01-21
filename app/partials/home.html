@@ -1,3 +1,4 @@
+<div id="map" ng-controller="MapCtrl" class="col-md-8"></div>
 <div class="col-md-4" ng-controller="LayerSwitcherCtrl">
   <ul ng-repeat="group in layers | groupBy:'group'"><h4>{{group}}</h4>
     <li ng-repeat="layer in layers | filter: {group: group}">

@@ -8,6 +8,9 @@ angular.module('myApp.controllers', [])
     $scope.$location = $location;
     $scope.$routeParams = $routeParams;
   }])
+  .controller('MapCtrl', [function() {
+    map.set('target', document.getElementById('map'));
+  }])
   .controller('LayerSwitcherCtrl', ['$scope', function($scope) {
     $scope.layers = [];
     $scope.updateSelected = function(layer) {
