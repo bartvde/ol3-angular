@@ -19,9 +19,4 @@ angular.module('myApp.filters', []).
         if (collection === null) return;
         return uniqueItems(collection, key);
       };
-  }]).
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    }
   }]);
