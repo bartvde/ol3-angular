@@ -46,6 +46,6 @@ angular.module('myApp.controllers', [])
           }
         }
       }, obj);
-      $scope.layers.push(obj);
+      $scope.layers.unshift(obj);
     });
   }]);
