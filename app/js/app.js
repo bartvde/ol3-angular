@@ -46,7 +46,7 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/home', {templateUrl: 'partials/home.html'});
+  $routeProvider.when('/', {templateUrl: 'partials/home.html'});
   $routeProvider.when('/about', {templateUrl: 'partials/about.html'});
-  $routeProvider.otherwise({redirectTo: '/home'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);
