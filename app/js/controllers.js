@@ -20,6 +20,16 @@ angular.module('myApp.controllers', [])
         }
       });
     };
+    $scope.removeLayer = function(layer) {
+      var title = layer.title, idx;
+      map.getLayers().forEach(function(el, index) {
+        if (el.get('title') === title) {
+          idx = index;
+        }
+      });
+      $scope.layers.splice($scope.layers.length-(idx+1), 1);
+      map.getLayers().removeAt(idx);
+    };
     $scope.updateVisiblity = function(layer) {
       var title = layer.title;
       map.getLayers().forEach(function(lyr) {
