@@ -18,17 +18,18 @@ var map = new ol.Map({
     new ol.layer.Vector({
         title: 'Zoning',
         group: 'Overlays',
-        style: new ol.style.Style({symbolizers: [
-            new ol.style.Stroke({
-                color: 'black',
-                width: 4,
-                opacity: 1
+        source: new ol.source.GeoJSON({
+          url: 'data/medford-zoning.json'
+        }),
+        styleFunction: function(feature, resolution) {
+          return [new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: 'black',
+              width: 4,
+              opacity: 1
             })
-        ]}),
-        source: new ol.source.Vector({
-            parser: new ol.parser.GeoJSON(),
-            url: 'data/medford-zoning.json'
-        })
+          })];
+        }
     })],
     view: new ol.View2D({
         center: ol.proj.transform(
